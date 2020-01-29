@@ -586,6 +586,35 @@ function twentysixteen_widget_tag_cloud_args( $args ) {
 }
 add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
 
+function wpdocs_selectively_enqueue_admin_script( $hook ) { ?>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  jQuery( function($) {
+    $( "#acf-start_date" ).datepicker();
+    $( "#acf-end_date" ).datepicker();
+  } );
+  </script>
+<?php }
+add_action( 'admin_enqueue_scripts', 'wpdocs_selectively_enqueue_admin_script' );
+add_action( 'wp_head','add_js');
+function add_js(){ ?>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  jQuery( function($) {
+    $( "#acf-start_date" ).datepicker();
+    $( "#acf-end_date" ).datepicker();
+  } );
+  </script>
+
+<?php }
+
 function my_acf_add_local_field_groups() {
 	
 	acf_add_local_field_group(array(
